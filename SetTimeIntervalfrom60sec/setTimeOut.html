@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Countdown Timer</h1>
+    <div id="timer">60</div>
+    <button id="startButton">Start Countdown</button>
+
+    <script>
+        let timer;
+        let timeRemaining = 60;
+
+        function startCountdown() {
+            // Clear any existing timer
+            clearInterval(timer);
+
+            // Update the timer display
+            document.getElementById("timer").innerText = timeRemaining;
+
+            timer = setInterval(() => {
+                timeRemaining--; // Decrease time remaining by 1 second
+                document.getElementById("timer").innerText = timeRemaining;
+
+                // Stop the timer when it reaches 0
+                if (timeRemaining <= 0) {
+                    clearInterval(timer);
+                    alert("Time's up!");
+                }
+            }, 1000); // 1000 milliseconds = 1 second
+        }
+
+        // Start the countdown on button click
+        document.getElementById("startButton").addEventListener("click", startCountdown);
+    </script>
+
+</body>
+</html>
